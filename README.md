@@ -1,2 +1,9 @@
-# allegheny_county_PODs_DABP_project
-Repository for our DABP project on PODs allocation in Allegheny County
+# Point of Dispenses (PODs) Allocation in Allegheny County (DABP Project)
+## Collaborators: Florian Cords, José Salomon, Prasun Shrestha, Ruth Wang
+
+Public health agencies use community locations, known as Points of Dispense (PODs), to quickly dispense and administer medical countermeasures (MCMs) to the public. MCMs include vaccines, antiviral drugs, and antibiotics to effectively prevent or treat a population from a public health crisis’s adverse health effects. The coronavirus pandemic has further underscored the importance of PODs, where medical resources are short in supply, and MCMs must be delivered to the public in a relatively short time.
+
+To prepare for an epidemic, policymakers and public health officials select N number of sites within a geographic unit, say county, and stock those sites with MCMs. The idea is to build sites that maximize accessibility, minimizing the travel distance and time for residents to go to a POD and receive medical attention. However, the selection of those sites is subject to multiple variables and constraints, such as population density, the number of sites a county could build, the capacity of each site, and the distance between neighborhoods and the PODs. Thus, our goal is to formulate a facility location model to optimally select several PODs from candidate sites (schools) that (a) minimizes the weighted average travel distance of the population and (b) minimizes the maximum travel distance for anyone. Allegheny County is our subject, so we will retrieve the census and spatial data of the county and its candidate sites.
+
+In our modeling, we will also simulate two scenarios – a local outbreak within a few zip codes and a global outbreak throughout the county, such as COVID-19 – and assess how our optimal solutions compare across those scenarios.
+
