@@ -16,26 +16,22 @@ import gurobipy as gp
 from gurobipy import GRB
 
 
-# Get current working directory 
-PATH = os.getcwd()
-
 # Import parameters NOTE: NEED TO USE GENFROMTEXT FUNC AS USING PANDAS CSV GENERATES WRONG SHAPE FOR N*1 ARRAYS
-with open(PATH+'/tracts.csv', 'r', encoding='utf-8-sig') as f: 
+with open('tracts.csv', 'r', encoding='utf-8-sig') as f: 
     tracts = np.genfromtxt(f, dtype=float, delimiter=',')
 
-with open(PATH+'/pods.csv', 'r', encoding='utf-8-sig') as f: 
+with open('pods.csv', 'r', encoding='utf-8-sig') as f: 
     pods = np.genfromtxt(f, dtype=float, delimiter=',')
 
-with open(PATH+'/dists.csv', 'r', encoding='utf-8-sig') as f: 
+with open('dists.csv', 'r', encoding='utf-8-sig') as f: 
     dists = np.genfromtxt(f, dtype=float, delimiter=',')
 
 
 #tracts = areas[:,0:2] #selects x,y coordinates leaving out population
 #pods = pods[:,0:2] #selects x,y coordinates leaving out capacity
 
-
-n = 402 #census tracts
-m = 47 #pods
+n = len(tracts) #census tracts
+m = len(pods) #pods
 
 P = 20 #number of pods that can be built
 tot_pop = 1231145 #total population in Allegheny County (sum of all census tracts)
@@ -103,8 +99,21 @@ print(m.objVal)
 ## Print optimal solution ##
 # shelters built
 
+
+import csv
+with open('pod_names.csv', newline='') as f:
+    reader = csv.reader(f)
+    pod_names = list(reader)
+
+
+build = []
+
 for i in n_pods:
-    print (i, x[i].x)
+    if x[i].x == 1:
+    	# add pod name to list
+    	build.append(pod_names[i])
+    # print (i, x[i].x)
+print(build)
 #
 ##areas assignments and distance
 #
